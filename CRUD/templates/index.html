@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ABP Cafeteria</title>
+	<link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+
+<body>
+	<div class="p-8">
+		<h1 class="text-5xl font-extrabold text-yellow-950 text-center mb-5">Cafeteria</h1>
+
+		<!-- Menu -->
+		<div class="bg-yellow-100 pt-1">
+			<h2 class="text-2xl font-bold text-yellow-700 my-2 underline text-center">MENU</h2>
+			<table class="table-fixed w-full my-2 bg-yellow-50">
+				<thead class="text-yellow-700 bg-yellow-100 font-bold">
+					<tr>
+						<td class="pb-2 ps-4">NOME</td>
+						<td class="">PREÇO</td>
+						<td class="">DESCRIÇÃO</td>
+						<!-- <td class=""></td> -->
+					</tr>
+				</thead>
+				<tbody>
+					{%for i in range(10)%}
+					<tr class="">
+						<td class="ps-4 text-start">$nome</td>
+						<td>R$00,00</td>
+						<td class="text-start">$lorem ipsum</td>
+						<!-- <td>
+							<button class="text-yellow-600 hover:font-extrabold">X</button>
+						</td> -->
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>
