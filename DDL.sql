@@ -18,7 +18,7 @@ GO
 -- CRIA TABELA CLIENTE
 CREATE TABLE cliente (
   codigo_cliente INT NOT NULL,
-  data_criacao DATE NOT NULL,
+  data_cadastro DATE NOT NULL,
   nome_cliente VARCHAR(100) NOT NULL,
   porcentagem_beneficio NUMERIC(5,2)
   CONSTRAINT codigo_cliente_pk PRIMARY KEY CLUSTERED(codigo_cliente ASC)
