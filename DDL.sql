@@ -17,7 +17,7 @@ CREATE TABLE pedido (
 GO
 -- CRIA TABELA CLIENTE
 CREATE TABLE cliente (
-  codigo_cliente INT NOT NULL,
+  codigo_cliente CHAR(11) NOT NULL,
   data_cadastro DATE NOT NULL,
   nome_cliente VARCHAR(100) NOT NULL,
   porcentagem_beneficio NUMERIC(5,2)
@@ -43,7 +43,7 @@ GO
 CREATE TABLE pagamento (
   codigo_pagamento INT IDENTITY(1,1) NOT NULL,
   codigo_pedido INT NOT NULL,
-  codigo_cliente INT NOT NULL,
+  codigo_cliente CHAR(11) NOT NULL,
   data_hora_pagamento DATETIME NOT NULL,
   valor_total NUMERIC(10, 2) NOT NULL,
   forma_pagamento CHAR(1) CONSTRAINT chk_forma_pagamento CHECK (forma_pagamento IN ('C','D'))
