@@ -21,7 +21,7 @@ CREATE TABLE cliente (
   data_criacao DATE NOT NULL,
   nome_cliente VARCHAR(100) NOT NULL,
   porcentagem_beneficio NUMERIC(5,2)
-  CONSTRAINT codigo_cliente_fk PRIMARY KEY CLUSTERED(codigo_cliente ASC)
+  CONSTRAINT codigo_cliente_pk PRIMARY KEY CLUSTERED(codigo_cliente ASC)
 )
 GO
 -- CRIA TABELA PEDIDO DO MENU
