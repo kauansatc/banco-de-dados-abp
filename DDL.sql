@@ -76,7 +76,7 @@ GO
 CREATE TABLE produto (
   codigo_produto INT NOT NULL,
   nome_produto VARCHAR(100) NOT NULL,
-  estoque_produto INT NOT NULL,
+  estoque_produto NUMERIC(5,2) NOT NULL,
   CONSTRAINT codigo_produto_pk PRIMARY KEY CLUSTERED(codigo_produto ASC)
 )
 GO
@@ -84,7 +84,7 @@ GO
 CREATE TABLE receita (
   codigo_menu INT NOT NULL,
   codigo_produto INT NOT NULL,
-  quantidade INT NOT NULL,
+  quantidade NUMERIC(5,2) NOT NULL,
 )
 GO
 ALTER TABLE receita
