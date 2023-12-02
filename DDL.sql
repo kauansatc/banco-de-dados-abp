@@ -75,7 +75,7 @@ GO
 -- CRIA TABELA RECEITA
 CREATE TABLE produto (
   codigo_produto INT NOT NULL,
-  nome_produto INT NOT NULL,
+  nome_produto VARCHAR(100) NOT NULL,
   estoque_produto INT NOT NULL,
   CONSTRAINT codigo_produto_pk PRIMARY KEY CLUSTERED(codigo_produto ASC)
 )
