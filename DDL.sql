@@ -2,8 +2,8 @@
 CREATE TABLE menu (
   codigo_menu INT NOT NULL,
   descricao VARCHAR(MAX) NOT NULL,
-  nome VARCHAR(100) NOT NULL,
   preco NUMERIC(5,2) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
   CONSTRAINT codigo_menu_pk PRIMARY KEY CLUSTERED(codigo_menu ASC)
 )
 GO
@@ -15,20 +15,11 @@ CREATE TABLE pedido (
   CONSTRAINT codigo_pedido_pk PRIMARY KEY CLUSTERED(codigo_pedido ASC)
 )
 GO
--- CRIA TABELA ITEM
-CREATE TABLE item (
-  nome VARCHAR(MAX) NOT NULL,
-  preco NUMERIC(5,2) NOT NULL,
-  codigo_item INT NOT NULL
-  CONSTRAINT codigo_item_fk PRIMARY KEY CLUSTERED(codigo_item ASC)
-)
-GO
 -- CRIA TABELA CLIENTE
 CREATE TABLE cliente (
   codigo_cliente INT NOT NULL,
-  codigo_cartao INT NOT NULL,
-  nome_cliente VARCHAR(100) NOT NULL,
   data_criacao DATE NOT NULL,
+  nome_cliente VARCHAR(100) NOT NULL,
   porcentagem_beneficio NUMERIC(5,2)
   CONSTRAINT codigo_cliente_fk PRIMARY KEY CLUSTERED(codigo_cliente ASC)
 )
@@ -80,4 +71,27 @@ GO
 ALTER TABLE avaliacao
 ADD CONSTRAINT codigo_pagamento_fk FOREIGN KEY (codigo_pagamento)
 REFERENCES pagamento (codigo_pagamento)
+GO
+-- CRIA TABELA RECEITA
+CREATE TABLE produto (
+  codigo_produto INT NOT NULL,
+  nome_produto INT NOT NULL,
+  estoque_produto INT NOT NULL,
+  CONSTRAINT codigo_produto_pk PRIMARY KEY CLUSTERED(codigo_produto ASC)
+)
+GO
+-- CRIA TABELA RECEITA
+CREATE TABLE receita (
+  codigo_menu INT NOT NULL,
+  codigo_produto INT NOT NULL,
+  quantidade INT NOT NULL,
+)
+GO
+ALTER TABLE receita
+ADD CONSTRAINT rc_codigo_menu_fk FOREIGN KEY (codigo_menu)
+REFERENCES menu (codigo_menu)
+GO
+ALTER TABLE receita
+ADD CONSTRAINT rc_codigo_produto_fk FOREIGN KEY (codigo_produto)
+REFERENCES produto (codigo_produto)
 GO
