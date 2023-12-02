@@ -10,7 +10,7 @@ GO
 -- CRIA TABELA PEDIDO
 CREATE TABLE pedido (
   codigo_pedido INT NOT NULL,
-  data_hora_pedido DATE NOT NULL,
+  data_hora_pedido DATETIME NOT NULL,
   preco_total INT NOT NULL,
   CONSTRAINT codigo_pedido_pk PRIMARY KEY CLUSTERED(codigo_pedido ASC)
 )
@@ -44,7 +44,7 @@ CREATE TABLE pagamento (
   codigo_pagamento INT NOT NULL,
   codigo_pedido INT NOT NULL,
   codigo_cliente INT NOT NULL,
-  data_hora_pagamento DATE NOT NULL,
+  data_hora_pagamento DATETIME NOT NULL,
   valor_total NUMERIC(10, 2) NOT NULL,
   forma_pagamento CHAR(1) CONSTRAINT chk_forma_pagamento CHECK (forma_pagamento IN ('C','D'))
   CONSTRAINT codigo_pagamento_pk PRIMARY KEY CLUSTERED(codigo_pagamento ASC)
@@ -61,7 +61,7 @@ GO
 -- CRIA TABELA AVALIAÇÃO
 CREATE TABLE avaliacao (
   codigo_avaliacao INT NOT NULL,
-  data_hora_avaliacao DATE NOT NULL,
+  data_hora_avaliacao DATETIME NOT NULL,
   pontuacao INT NULL,
   comentario VARCHAR(MAX) NULL,
   codigo_pagamento INT
