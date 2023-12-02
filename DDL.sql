@@ -1,6 +1,6 @@
 -- CRIA TABELA MENU
 CREATE TABLE menu (
-  codigo_menu INT NOT NULL,
+  codigo_menu INT IDENTITY(1,1) NOT NULL,
   descricao VARCHAR(MAX) NOT NULL,
   preco NUMERIC(5,2) NOT NULL,
   nome VARCHAR(100) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE menu (
 GO
 -- CRIA TABELA PEDIDO
 CREATE TABLE pedido (
-  codigo_pedido INT NOT NULL,
+  codigo_pedido INT IDENTITY(1,1) NOT NULL,
   data_hora_pedido DATETIME NOT NULL,
   preco_total INT NOT NULL,
   CONSTRAINT codigo_pedido_pk PRIMARY KEY CLUSTERED(codigo_pedido ASC)
@@ -41,7 +41,7 @@ REFERENCES pedido (codigo_pedido)
 GO
 -- CRIA TABELA PAGAMENTO
 CREATE TABLE pagamento (
-  codigo_pagamento INT NOT NULL,
+  codigo_pagamento INT IDENTITY(1,1) NOT NULL,
   codigo_pedido INT NOT NULL,
   codigo_cliente INT NOT NULL,
   data_hora_pagamento DATETIME NOT NULL,
@@ -74,7 +74,7 @@ REFERENCES pagamento (codigo_pagamento)
 GO
 -- CRIA TABELA RECEITA
 CREATE TABLE produto (
-  codigo_produto INT NOT NULL,
+  codigo_produto INT IDENTITY(1,1) NOT NULL,
   nome_produto VARCHAR(100) NOT NULL,
   estoque_produto NUMERIC(5,2) NOT NULL,
   CONSTRAINT codigo_produto_pk PRIMARY KEY CLUSTERED(codigo_produto ASC)
