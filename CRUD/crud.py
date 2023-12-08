@@ -15,20 +15,20 @@ class __Database:
     def get_menu(self):
         with self.conn.cursor() as cursor:
             cursor.execute(
-                "SELECT codigo_menu, nome, preco, descricao FROM menu")
+                "SELECT cod_item_menu, nome, preco, descricao FROM menu")
             return cursor.fetchall()
 
     def get_menu_item(self, codigo):
         with self.conn.cursor() as cursor:
             cursor.execute(
-                "SELECT codigo_menu, nome, preco, descricao FROM menu WHERE codigo_menu = ?", codigo)
+                "SELECT cod_item_menu, nome, preco, descricao FROM menu WHERE cod_item_menu = ?", codigo)
             return cursor.fetchone()
 
     def edit_menu_item(self, codigo, nome, preco, descricao):
         with self.conn.cursor() as cursor:
             try:
                 cursor.execute(
-                    "UPDATE menu SET nome = ?, preco = ?, descricao = ? WHERE codigo_menu = ?", nome, preco, descricao, codigo)
+                    "UPDATE menu SET nome = ?, preco = ?, descricao = ? WHERE cod_item_menu = ?", nome, preco, descricao, codigo)
             except Exception as e:
                 cursor.rollback()
                 raise Exception("Erro ao editar item") from e
@@ -37,7 +37,7 @@ class __Database:
         with self.conn.cursor() as cursor:
             try:
                 cursor.execute(
-                    "SET NOCOUNT ON; INSERT INTO menu (nome, preco, descricao) VALUES (?, ?, ?); SELECT @@IDENTITY AS codigo_menu", "Item não catalogado", 0.0, "sem descrição")
+                    "SET NOCOUNT ON; INSERT INTO menu (nome, preco, descricao) VALUES (?, ?, ?); SELECT @@IDENTITY AS cod_item_menu", "Item não catalogado", 0.0, "sem descrição")
                 return cursor.fetchone()[0]
             except Exception as e:
                 cursor.rollback()
@@ -47,7 +47,7 @@ class __Database:
         with self.conn.cursor() as cursor:
             try:
                 cursor.execute(
-                    "DELETE FROM menu WHERE codigo_menu = ?", codigo)
+                    "DELETE FROM menu WHERE cod_item_menu = ?", codigo)
             except Exception as e:
                 cursor.rollback()
                 raise Exception("Erro ao editar item") from e
