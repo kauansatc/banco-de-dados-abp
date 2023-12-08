@@ -15,8 +15,13 @@ Este é o procedimento para criação do banco de dados Azure SQL Criando SQL Az
 Abaixo, segue os scripts SQL separados por tipo:
 
 DDL [ddl.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/DDL.sql)
+
 Índices indices.sql
+
 DML [População](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/issues/7)
+
 Triggers [Trigger.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Trigger.sql)
+
 Stored Procedures [Procedures.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Procedures.sql)
+
 Functions [Funcoes.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Funcoes.sql)
