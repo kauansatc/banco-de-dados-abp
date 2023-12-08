@@ -42,13 +42,19 @@
 
         </div>
 
-        <div class="flex items-center justify-center w-2/3 mx-auto mt-2">
-          <a href="/"
-            class="bg-yellow-900 text-center text-yellow-100 font-semibold w-full hover:text-lg transition-all border-b-2 border-yellow-200 rounded-lg p-1 me-4 hover:p-2">
-            Cancelar
-          </a>
+        <div class="flex-col items-center justify-center w-2/3 mx-auto my-2">
+          <div class="flex items-center my-2">
+            <a href="/"
+              class="bg-yellow-900 text-center text-yellow-100 font-semibold w-full hover:text-lg transition-all border-b-2 border-yellow-200 rounded-lg p-1 me-4 hover:p-2">
+              Cancelar
+            </a>
+            <a href="/rm/{{item[0]}}"
+              class="bg-rose-900 text-center text-rose-100 font-semibold w-full hover:text-lg transition-all border-b-2 border-rose-200 rounded-lg p-1 ms-3 hover:p-2">
+              Deletar
+            </a>
+          </div>
           <button type="submit" value="Editar" id="editar"
-            class="bg-yellow-900 text-center text-yellow-100 font-semibold w-full hover:text-lg transition-all border-b-2 border-yellow-200 rounded-lg p-1 ms-4 hover:p-2">
+            class="bg-green-900 text-center text-green-100 font-semibold w-full hover:text-lg transition-all border-b-2 border-green-200 rounded-lg p-1 hover:p-2">
             Editar
           </button>
         </div>

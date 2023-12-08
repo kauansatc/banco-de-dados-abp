@@ -31,9 +31,15 @@ def edit():
 
 
 @app.route("/add")
-def add():
+def add_new():
     codigo = database.add_menu_item()
     return redirect(f"/menu/{codigo}")
+
+
+@app.route("/rm/<codigo>")
+def remove(codigo):
+    database.delete_menu_item(codigo)
+    return redirect("/")
 
 
 app.run(debug=True)

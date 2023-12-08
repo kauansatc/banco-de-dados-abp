@@ -1,15 +1,13 @@
 import pyodbc
-server = ''
-database = ''
-username = ''
-password = ''
+server = 'MELLERNOTEBOOK\SQLMELLER'
+database = 'master'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 
 class __Database:
     def __init__(self):
-        self.conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server +
-                                   ';PORT=1433;DATABASE='+database+';UID='+username+';PWD=' + password)
+        self.conn = pyodbc.connect(
+            f'DRIVER={driver};SERVER={server};' f'DATABASE={database};Trusted_Connection=yes;')
 
         if self.conn:
             print("Conectado com sucesso!")
@@ -44,6 +42,15 @@ class __Database:
             except Exception as e:
                 cursor.rollback()
                 raise Exception("Erro ao inserir item") from e
+
+    def delete_menu_item(self, codigo):
+        with self.conn.cursor() as cursor:
+            try:
+                cursor.execute(
+                    "DELETE FROM menu WHERE codigo_menu = ?", codigo)
+            except Exception as e:
+                cursor.rollback()
+                raise Exception("Erro ao editar item") from e
 
 
 database = __Database()
