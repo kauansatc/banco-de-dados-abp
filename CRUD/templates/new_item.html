@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABP Cafeteria</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+
+<body>
+  <div class="p-8 bg-yellow-950 min-h-screen">
+    <h1 class="text-5xl font-extrabold text-yellow-100 tracking-widest text-center mb-5">CAFETERIA ☕</h1>
+
+    <div class="pt-1">
+      <h2 class="text-3xl font-bold text-yellow-100 tracking-wider py-3 ps-10 bg-yellow-900 rounded-2xl">
+        EDITAR ITEM <span class="text-yellow-200 font-mono italic">cod.{{item[0]}}</span>
+      </h2>
+
+      <div class="flex-col text-yellow-100 mt-4 p-2">
+        <div class="flex items-center justify-center">
+          <a href="/" class="text-center font-semibold mt-2 w-full hover:text-lg hover:text-yellow-700 transition-all">
+            Voltar
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
