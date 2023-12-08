@@ -25,3 +25,5 @@ Triggers [Trigger.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria
 Stored Procedures [Procedures.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Procedures.sql)
 
 Functions [Funcoes.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Funcoes.sql)
+
+Perguntas [Questions.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Questions.sql)
