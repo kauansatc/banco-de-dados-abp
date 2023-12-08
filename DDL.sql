@@ -1,97 +1,100 @@
--- CRIA TABELA MENU
 CREATE TABLE menu (
-  codigo_menu INT IDENTITY(1,1) NOT NULL,
+  cod_item_menu INT IDENTITY(1,1) NOT NULL,
   descricao VARCHAR(MAX) NOT NULL,
   preco NUMERIC(5,2) NOT NULL,
-  nome VARCHAR(100) NOT NULL,
-  CONSTRAINT codigo_menu_pk PRIMARY KEY CLUSTERED(codigo_menu ASC)
+  nome VARCHAR(45) NOT NULL,
+  CONSTRAINT cod_item_menu_pk PRIMARY KEY CLUSTERED(cod_item_menu ASC)
 )
 GO
--- CRIA TABELA PEDIDO
-CREATE TABLE pedido (
-  codigo_pedido INT IDENTITY(1,1) NOT NULL,
-  data_hora_pedido DATETIME NOT NULL,
-  preco_total INT NOT NULL,
-  CONSTRAINT codigo_pedido_pk PRIMARY KEY CLUSTERED(codigo_pedido ASC)
-)
-GO
--- CRIA TABELA CLIENTE
+
 CREATE TABLE cliente (
-  codigo_cliente CHAR(11) NOT NULL,
-  data_cadastro DATE NOT NULL,
-  nome_cliente VARCHAR(100) NOT NULL,
-  porcentagem_beneficio NUMERIC(5,2)
-  CONSTRAINT codigo_cliente_pk PRIMARY KEY CLUSTERED(codigo_cliente ASC)
+  cpf CHAR(11) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  CONSTRAINT cpf_pk PRIMARY KEY CLUSTERED(cpf ASC)
 )
 GO
--- CRIA TABELA PEDIDO DO MENU
+
+CREATE TABLE pedido (
+  cod_pedido INT IDENTITY(1,1) NOT NULL,
+  hora_pedido DATETIME NOT NULL,
+  preco_total NUMERIC(5,2) NOT NULL,
+  cpf char(11)
+  CONSTRAINT cod_pedido_pk PRIMARY KEY CLUSTERED(cod_pedido ASC)
+)
+GO
+
+ALTER TABLE pedido
+ADD CONSTRAINT cpf_fk FOREIGN KEY (cpf)
+REFERENCES cliente (cpf)
+GO
+
 CREATE TABLE pedido_menu (
-  codigo_menu INT NOT NULL,
-  codigo_pedido INT NOT NULL,
+  cod_pedido INT NOT NULL,
+  cod_item_menu INT NOT NULL,
   quantidade INT NOT NULL
 )
 GO
+
 ALTER TABLE pedido_menu
-ADD CONSTRAINT pm_codigo_menu_fk FOREIGN KEY (codigo_menu)
-REFERENCES menu (codigo_menu)
+ADD CONSTRAINT pm_cod_pedido_fk FOREIGN KEY (cod_pedido)
+REFERENCES pedido (cod_pedido)
 GO
+
 ALTER TABLE pedido_menu
-ADD CONSTRAINT pm_codigo_pedido_fk FOREIGN KEY (codigo_pedido)
-REFERENCES pedido (codigo_pedido)
+ADD CONSTRAINT pm_cod_item_menu_fk FOREIGN KEY (cod_item_menu)
+REFERENCES menu (cod_item_menu)
 GO
--- CRIA TABELA PAGAMENTO
+
 CREATE TABLE pagamento (
-  codigo_pagamento INT IDENTITY(1,1) NOT NULL,
-  codigo_pedido INT NOT NULL,
-  codigo_cliente CHAR(11) NOT NULL,
-  data_hora_pagamento DATETIME NOT NULL,
-  valor_total NUMERIC(10, 2) NOT NULL,
+  cod_pagamento INT IDENTITY(1,1) NOT NULL,
+  cod_pedido INT NOT NULL,
+  hora_pagamento DATETIME NOT NULL,
   forma_pagamento CHAR(1) CONSTRAINT chk_forma_pagamento CHECK (forma_pagamento IN ('C','D'))
-  CONSTRAINT codigo_pagamento_pk PRIMARY KEY CLUSTERED(codigo_pagamento ASC)
+  CONSTRAINT cod_pagamento_pk PRIMARY KEY CLUSTERED(cod_pagamento ASC)
 )
 GO
+
 ALTER TABLE pagamento
-ADD CONSTRAINT pg_codigo_pedido_fk FOREIGN KEY (codigo_pedido)
-REFERENCES pedido (codigo_pedido)
+ADD CONSTRAINT p_cod_pedido_fk FOREIGN KEY (cod_pedido)
+REFERENCES pedido (cod_pedido)
 GO
-ALTER TABLE pagamento
-ADD CONSTRAINT pg_codigo_cliente_fk FOREIGN KEY (codigo_cliente)
-REFERENCES cliente (codigo_cliente)
-GO
--- CRIA TABELA AVALIAÇÃO
+
 CREATE TABLE avaliacao (
-  codigo_avaliacao INT NOT NULL,
-  data_hora_avaliacao DATETIME NOT NULL,
-  pontuacao INT NULL,
+  cod_avaliacao INT NOT NULL,
+  hora_avaliacao DATETIME NOT NULL,
+  valor_pontuacao INT NULL,
   comentario VARCHAR(MAX) NULL,
-  codigo_pagamento INT
-  CONSTRAINT codigo_avaliacao_pk PRIMARY KEY CLUSTERED(codigo_avaliacao ASC)
+  cod_pagamento INT
+  CONSTRAINT cod_avaliacao_pk PRIMARY KEY CLUSTERED(cod_avaliacao ASC)
 )
 GO
+
 ALTER TABLE avaliacao
-ADD CONSTRAINT codigo_pagamento_fk FOREIGN KEY (codigo_pagamento)
-REFERENCES pagamento (codigo_pagamento)
+ADD CONSTRAINT cod_pagamento_fk FOREIGN KEY (cod_pagamento)
+REFERENCES pagamento (cod_pagamento)
 GO
--- CRIA TABELA RECEITA
+
 CREATE TABLE produto (
-  codigo_produto INT IDENTITY(1,1) NOT NULL,
-  nome_produto VARCHAR(100) NOT NULL,
-  estoque_produto NUMERIC(5,2) NOT NULL,
-  CONSTRAINT codigo_produto_pk PRIMARY KEY CLUSTERED(codigo_produto ASC)
+  cod_produto INT IDENTITY(1,1) NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  estoque NUMERIC(5,2) NOT NULL,
+  CONSTRAINT cod_produto_pk PRIMARY KEY CLUSTERED(cod_produto ASC)
 )
 GO
--- CRIA TABELA RECEITA
-CREATE TABLE receita (
-  codigo_menu INT NOT NULL,
-  codigo_produto INT NOT NULL,
-  quantidade NUMERIC(5,2) NOT NULL,
+
+CREATE TABLE receita_item_menu (
+  cod_item_menu INT NOT NULL,
+  cod_produto INT NOT NULL,
+  quantidade_produto NUMERIC(5,2) NOT NULL,
 )
 GO
-ALTER TABLE receita
-ADD CONSTRAINT rc_codigo_menu_fk FOREIGN KEY (codigo_menu)
-REFERENCES menu (codigo_menu)
+
+ALTER TABLE receita_item_menu
+ADD CONSTRAINT rim_cod_item_menu_fk FOREIGN KEY (cod_item_menu)
+REFERENCES menu (cod_item_menu)
 GO
-ALTER TABLE receita
-ADD CONSTRAINT rc_codigo_produto_fk FOREIGN KEY (codigo_produto)
-REFERENCES produto (codigo_produto)
+
+ALTER TABLE receita_item_menu
+ADD CONSTRAINT cod_produto_fk FOREIGN KEY (cod_produto)
+REFERENCES produto (cod_produto)
 GO
