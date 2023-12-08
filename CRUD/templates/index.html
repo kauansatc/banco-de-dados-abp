@@ -12,7 +12,6 @@
 	<div class="p-8 bg-yellow-950 min-h-screen">
 		<h1 class="text-5xl font-extrabold text-yellow-100 tracking-widest text-center mb-5">CAFETERIA ☕</h1>
 
-		<!-- Menu -->
 		<div class="pt-1">
 			<h2 class="text-3xl font-bold text-yellow-100 tracking-wider py-3 ps-10 bg-yellow-900 rounded-2xl">
 				MENU
@@ -35,9 +34,11 @@
 				{% endfor %}
 
 				<div class="flex items-center justify-center">
-					<button class="font-semibold mt-2 w-full hover:text-lg hover:text-yellow-700 transition-all">
-						+ Adicionar Item
-					</button>
+					<a href="/add">
+						<button class="font-semibold mt-2 w-full hover:text-lg hover:text-yellow-400 transition-all">
+							+ Adicionar Item
+						</button>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -31,8 +31,19 @@ class __Database:
             try:
                 cursor.execute(
                     "UPDATE menu SET nome = ?, preco = ?, descricao = ? WHERE codigo_menu = ?", nome, preco, descricao, codigo)
-            except:
+            except Exception as e:
                 cursor.rollback()
+                raise Exception("Erro ao editar item") from e
+
+    def add_menu_item(self):
+        with self.conn.cursor() as cursor:
+            try:
+                cursor.execute(
+                    "SET NOCOUNT ON; INSERT INTO menu (nome, preco, descricao) VALUES (?, ?, ?); SELECT @@IDENTITY AS codigo_menu", "Item não catalogado", 0.0, "sem descrição")
+                return cursor.fetchone()[0]
+            except Exception as e:
+                cursor.rollback()
+                raise Exception("Erro ao inserir item") from e
 
 
 database = __Database()

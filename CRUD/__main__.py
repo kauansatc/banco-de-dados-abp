@@ -21,13 +21,19 @@ def menu(codigo):
 def edit():
     args = request.args.to_dict()
 
-    print(args) 
+    print(args)
 
     args["codigo"] = int(args["codigo"])
     args["preco"] = float(args["preco"])
     database.edit_menu_item(**args)
 
     return redirect("/")
+
+
+@app.route("/add")
+def add():
+    codigo = database.add_menu_item()
+    return redirect(f"/menu/{codigo}")
 
 
 app.run(debug=True)
