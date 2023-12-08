@@ -27,3 +27,12 @@ Stored Procedures [Procedures.sql](https://github.com/kauanfontanela/gerenciamen
 Functions [Funcoes.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Funcoes.sql)
 
 Perguntas [Questions.sql](https://github.com/kauanfontanela/gerenciamento-cafeteria-abp2023/blob/main/Questions.sql)
+
+# Rodar CRUD
+
+- Requisitos: 
+-   Python: `pyodbc`, `flask`
+
+```bash
+python CRUD/
+```
