@@ -1,4 +1,4 @@
-# Gerenciamento Cafeteria
+# Projeto Universitário - Gerenciamento Cafeteria
 
 # Modelo Físico
 Utilizamos a ferramenta de modelagem de dados [draw.io](https://app.diagrams.net) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.
